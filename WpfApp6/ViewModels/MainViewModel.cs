@@ -37,12 +37,12 @@ namespace WpfApp6.ViewModels
             set { purchased = value; OnPropertyChanged(); }
         }
 
-
         public RelayCommand SelectedCommand { get; set; }
         public RelayCommand AddCommand { get; set; }
         public RelayCommand RemoveCommand { get; set; }
         public RelayCommand BuyCommand { get; set; }
         public RelayCommand ResetCommand { get; set; }
+        public RelayCommand ShowCommand { get; set; }
         private int count;
 
         public int Count
@@ -69,11 +69,15 @@ namespace WpfApp6.ViewModels
                 Count = count;
             }, (pred) =>
             {
-                if (Drink.Id < 1)
+                if (Drink != null)
                 {
-                    return false;
+                    if (Drink.Id < 1)
+                    {
+                        return false;
+                    }
+                    return true;
                 }
-                return true;
+                return false;
             });
             RemoveCommand = new RelayCommand((o) =>
             {
@@ -84,34 +88,77 @@ namespace WpfApp6.ViewModels
                 Count = count;
             }, (pred) =>
             {
-                if (Drink.Id < 1)
+                if (Drink != null)
                 {
-                    return false;
+                    if (Drink.Id < 1)
+                    {
+                        return false;
+                    }
+                    return true;
                 }
-                return true;
+                return false;
             });
             BuyCommand = new RelayCommand((obj) =>
             {
                 if (Count > 0)
                 {
                     Drink.DrinkCount = Count;
+                    Drink.TotalPrice = Drink.DrinkCount * Drink.DrinkPrice;
                     purchased.Add(Drink);
                     MessageBox.Show("You've bought the drink");
+                    Count = 0;
+                }
+                else
+                {
+                    MessageBox.Show("You have to add count of drink");
                 }
             }, (pred) =>
             {
-                if (Drink.Id < 1)
+                if (Drink != null)
                 {
-                    return false;
+                    if (Drink.Id < 1)
+                    {
+                        return false;
+                    }
+                    return true;
                 }
-                return true;
+                return false;
             });
             ResetCommand = new RelayCommand((obj) =>
             {
-                Drink.Id =-1;
-                Drink.DrinkPrice = 0;
-                Drink.DrinkName=String.Empty;
-                Drink.DrinkVolume = 0;
+                Drink = null;
+                Count = 0;
+            }, (pred) =>
+            {
+                if (Drink != null)
+                {
+                    if (Drink.Id < 1)
+                    {
+                        return false;
+                    }
+                    return true;
+                }
+                return false;
+            });
+            ShowCommand = new RelayCommand((obj) =>
+            {
+                    ShowHistoryViewModel vm = new ShowHistoryViewModel();
+                    vm.ShowPurchased = Purchased;
+
+                    ShowHistoryWindow window = new ShowHistoryWindow();
+                    window.DataContext = vm;
+                    window.ShowDialog();
+            }, (pred) =>
+            {
+                if (Drink != null)
+                {
+                    if (Drink.Id < 1)
+                    {
+                        return false;
+                    }
+                    return true;
+                }
+                return false;
             });
         }
     }

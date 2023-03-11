@@ -61,6 +61,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\ShowHistoryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -75,6 +79,10 @@
     <Compile Include="Repositories\FakeRepo.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\ShowHistoryViewModel.cs" />
+    <Compile Include="Views\ShowHistoryWindow.xaml.cs">
+      <DependentUpon>ShowHistoryWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -108,23 +116,20 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\sprite.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\cappypulpy.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\fanta.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\cola.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\icetea.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="images\add.png" />
     <Resource Include="images\remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\cappy.png" />
+    <Resource Include="images\drinks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\fusetea.png" />
+    <Resource Include="images\sprite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\cola.png" />
+    <Resource Include="images\fanta.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

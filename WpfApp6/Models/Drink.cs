@@ -12,6 +12,7 @@ namespace WpfApp6.Models
         public decimal DrinkPrice { get; set; }
         public decimal DrinkVolume { get; set; }
         public decimal DrinkCount{ get; set; }
+        public decimal TotalPrice{ get; set; }
         public string ImagePath { get; set; }
     }
 }
