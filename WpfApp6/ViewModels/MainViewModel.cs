@@ -69,15 +69,11 @@ namespace WpfApp6.ViewModels
                 Count = count;
             }, (pred) =>
             {
-                if (Drink != null)
+                if(Drink==null || Drink.Id < 1)
                 {
-                    if (Drink.Id < 1)
-                    {
-                        return false;
-                    }
-                    return true;
+                    return false;
                 }
-                return false;
+                return true;
             });
             RemoveCommand = new RelayCommand((o) =>
             {
@@ -88,15 +84,11 @@ namespace WpfApp6.ViewModels
                 Count = count;
             }, (pred) =>
             {
-                if (Drink != null)
+                if (Drink == null || Drink.Id < 1)
                 {
-                    if (Drink.Id < 1)
-                    {
-                        return false;
-                    }
-                    return true;
+                    return false;
                 }
-                return false;
+                return true;
             });
             BuyCommand = new RelayCommand((obj) =>
             {
@@ -114,15 +106,11 @@ namespace WpfApp6.ViewModels
                 }
             }, (pred) =>
             {
-                if (Drink != null)
+                if (Drink == null || Drink.Id < 1)
                 {
-                    if (Drink.Id < 1)
-                    {
-                        return false;
-                    }
-                    return true;
+                    return false;
                 }
-                return false;
+                return true;
             });
             ResetCommand = new RelayCommand((obj) =>
             {
@@ -130,15 +118,11 @@ namespace WpfApp6.ViewModels
                 Count = 0;
             }, (pred) =>
             {
-                if (Drink != null)
+                if (Drink == null || Drink.Id < 1)
                 {
-                    if (Drink.Id < 1)
-                    {
-                        return false;
-                    }
-                    return true;
+                    return false;
                 }
-                return false;
+                return true;
             });
             ShowCommand = new RelayCommand((obj) =>
             {
@@ -150,15 +134,11 @@ namespace WpfApp6.ViewModels
                     window.ShowDialog();
             }, (pred) =>
             {
-                if (Drink != null)
+                if (Drink == null || Drink.Id < 1)
                 {
-                    if (Drink.Id < 1)
-                    {
-                        return false;
-                    }
-                    return true;
+                    return false;
                 }
-                return false;
+                return true;
             });
         }
     }
